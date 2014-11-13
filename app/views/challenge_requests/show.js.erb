@@ -3,3 +3,5 @@
 <% else %>
 	$("#challenge-<%= @challenge_request.id %>").removeClass("complete");
 <% end %>
+
+$(".token-count").text("<%= pluralize(@current_person.tokens, "Token") %>");

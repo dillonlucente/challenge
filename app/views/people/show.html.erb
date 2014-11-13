@@ -12,7 +12,9 @@
 <% if @person == @current_person %>
 	<p>
 		<% if @person.can_challenge? %>
-			<%= link_to "Challenge Someone (#{pluralize(@person.tokens, "Token")} left)", people_path %>
+			<%= link_to people_path do %>
+				Challenge Someone (<span class="token-count"><%= pluralize(@current_person.tokens, "Token") %></span> left)
+			<% end %>
 		<% else %>
 			Complete some challenges to gain tokens.
 		<% end %>
@@ -30,11 +32,16 @@
 <% else %>
 	<p>
 		<% if @current_person.can_challenge? %>
-			<%= link_to "Challenge This Person (#{pluralize(@current_person.tokens, "Token")} left)", new_person_challenge_request_path(@person) %>
+			<%= link_to new_person_challenge_request_path(@person) do %>
+				Challenge This Person (<span class="token-count"><%= pluralize(@current_person.tokens, "Token") %></span> left)
+			<% end %>
 
 			<br>
+			<br>
 
-			<%= link_to "Challenge Someone Else (#{pluralize(@current_person.tokens, "Token")} left)", people_path %>
+			<%= link_to people_path do %>
+				Challenge Someone (<span class="token-count"><%= pluralize(@current_person.tokens, "Token") %></span> left)
+			<% end %>
 		<% else %>
 			Complete some challenges to challenge this person.
 		<% end %>
