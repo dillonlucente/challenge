@@ -7,8 +7,14 @@ Rails.application.routes.draw do
   get '/logout' => 'sessions#destroy'
 
   resources :sessions
-  resources :people
-  
+
+  resources :people do
+    resources :challenge_requests, only: :new
+  end
+
+  resources :challenge_requests, only: [:create, :show, :update]
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

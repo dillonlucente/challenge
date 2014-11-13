@@ -5,3 +5,9 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+adam = Person.create(name: "Adam Scott", email: "ascott@parks.com", password: "password", password_confirmation: "password")
+amy = Person.create(name: "Amy Poehler", email: "apoehler@rec.com", password: "password", password_confirmation: "password")
+
+ChallengeRequest.create(person: adam, assignee: amy, text: "Write an awesome book", complete: true)
+ChallengeRequest.create(person: amy, assignee: adam, text: "Write your own awesome book", complete: false)

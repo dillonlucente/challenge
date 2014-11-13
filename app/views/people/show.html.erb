@@ -1,12 +1,35 @@
 <h1><%= @person.name %></h1>
 <h2><%= @person.email %></h2>
 
+<% # add gravatar here %>
+
 <h3>Challenges</h3>
 
+<ul>
+	<%= render @person.challenges %>
+</ul>
+
 <% if @person == @current_person %>
-	<%= link_to "Challenge Someone", people_path %>
+	<p>
+		<% if @person.can_challenge? %>
+			<%= link_to "Challenge Someone (#{pluralize(@person.tokens, "Token")} left)", people_path %>
+		<% else %>
+			Complete some challenges to gain tokens.
+		<% end %>
+	</p>
+
 	<%= link_to "Edit", edit_person_path(@person) %>
 	<%= link_to "Leave", @person, method: :delete, data: {confirm: "Are you sure you want to leave all of your challenges behind?"} %>
 <% else %>
-	<h4>Challenge this person</h4>
+	<p>
+		<% if @current_person.can_challenge? %>
+			<%= link_to "Challenge This Person (#{pluralize(@current_person.tokens, "Token")} left)", new_person_challenge_request_path(@person) %>
+
+			<br>
+
+			<%= link_to "Challenge Someone Else (#{pluralize(@current_person.tokens, "Token")} left)", people_path %>
+		<% else %>
+			Complete some challenges to challenge this person.
+		<% end %>
+	</p>
 <% end %>

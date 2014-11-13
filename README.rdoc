@@ -2,7 +2,15 @@
 
 This app lets you challenge your friends. Let's challenge!
 
-Running tests
+Tokens
+------
+
+You need tokens to challenge someone. You get tokens for completing challenges.
+
+In development, give yourself some tokens using the rails console.
+
+Running Tests
+-------------
 
 Using ActiveSupport TestCase to run tests:
 

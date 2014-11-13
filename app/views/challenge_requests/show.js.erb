@@ -1,0 +1,5 @@
+<% if @challenge_request.complete? %>
+	$("#challenge-<%= @challenge_request.id %>").addClass("complete");
+<% else %>
+	$("#challenge-<%= @challenge_request.id %>").removeClass("complete");
+<% end %>

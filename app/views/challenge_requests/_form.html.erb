@@ -1,0 +1,6 @@
+<%= form_for @challenge_request do |f| %>
+	<%= f.hidden_field :assignee_id %>
+	<%= f.text_field :text, placeholder: "text" %>
+
+	<%= f.submit @challenge_request.new_record? ? "Challenge" : "Update" %>
+<% end %>

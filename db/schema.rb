@@ -11,7 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141113192728) do
+ActiveRecord::Schema.define(version: 20141113210252) do
+
+  create_table "challenge_requests", force: true do |t|
+    t.string   "text"
+    t.boolean  "complete",    default: false
+    t.integer  "person_id"
+    t.integer  "assignee_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "people", force: true do |t|
     t.string   "name"
@@ -19,6 +28,7 @@ ActiveRecord::Schema.define(version: 20141113192728) do
     t.string   "password_digest"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "tokens"
   end
 
 end
