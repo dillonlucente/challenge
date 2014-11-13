@@ -18,7 +18,14 @@
 		<% end %>
 	</p>
 
+	<br>
+	<br>
+
 	<%= link_to "Edit", edit_person_path(@person) %>
+
+	<br>
+	<br>
+
 	<%= link_to "Leave", @person, method: :delete, data: {confirm: "Are you sure you want to leave all of your challenges behind?"} %>
 <% else %>
 	<p>
