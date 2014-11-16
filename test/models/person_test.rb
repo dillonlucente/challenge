@@ -12,7 +12,13 @@ class PersonTest < ActiveSupport::TestCase
   end
 
   test ":email validates uniqueness" do
-     skip "We need to make emails unique"
+     valid_person = Person.new(email: "test@example.com", password: "password", password_confirmation: "password")
+
+     assert valid_person.save
+
+     invalid_person = Person.new(email: "test@example.com", password: "password", password_confirmation: "password")
+
+     assert_not invalid_person.save
   end
 
 end
