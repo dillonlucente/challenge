@@ -22,13 +22,14 @@
 
 	<br>
 	<br>
+	<% if @person == @current_user %>
+		<%= link_to "Edit", edit_person_path(@person) %>
 
-	<%= link_to "Edit", edit_person_path(@person) %>
+		<br>
+		<br>
 
-	<br>
-	<br>
-
-	<%= link_to "Leave", @person, method: :delete, data: {confirm: "Are you sure you want to leave all of your challenges behind?"} %>
+		<%= link_to "Leave", @person, method: :delete, data: {confirm: "Are you sure you want to leave all of your challenges behind?"} %>
+	<% end %>
 <% else %>
 	<p>
 		<% if @current_person.can_challenge? %>
