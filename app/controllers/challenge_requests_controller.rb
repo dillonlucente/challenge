@@ -22,8 +22,13 @@ class ChallengeRequestsController < ApplicationController
   end
 
   def update
+    if params[:challenge_request][:complete] == "1"
+      @challenge_request.assignee.update_attributes({tokens: (@challenge_request.assignee.tokens += 1)})
+    else params[:challenge_request][:complete] == "0"
+      @challenge_request.assignee.update_attributes({tokens: (@challenge_request.assignee.tokens -= 1)})
+    end
     @challenge_request.update(challenge_request_params)
-      
+
     redirect_to @challenge_request
   end
 

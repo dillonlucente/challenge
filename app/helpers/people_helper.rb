@@ -1,6 +1,9 @@
+require 'digest'
+
 module PeopleHelper
   def gravatar_url_for(email)
-    "http://img.thedailywtf.com/images/remy/foreveralone.jpg"
+    hash = Digest::MD5.digest(email.downcase.strip)
+    "http://www.gravatar.com/avatar/" + hash
   end
 
 end

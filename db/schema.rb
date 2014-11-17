@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141113210252) do
+ActiveRecord::Schema.define(version: 20141116022559) do
 
   create_table "challenge_requests", force: true do |t|
     t.string   "text"
@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 20141113210252) do
     t.string   "password_digest"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "tokens"
+    t.integer  "tokens",          default: 5
   end
 
 end
