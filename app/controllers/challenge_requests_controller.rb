@@ -5,16 +5,16 @@ class ChallengeRequestsController < ApplicationController
 
   def new
     @challenge_request = ChallengeRequest.new
-    @challenge_request.person = @current_person
+    @challenge_request.person = current_user
     @challenge_request.assignee = Person.find(params[:person_id]) if params[:person_id]
   end
 
   def create
     @challenge_request = ChallengeRequest.new(challenge_request_params)
-    @challenge_request.person = @current_person
+    @challenge_request.person = current_user
 
     if @challenge_request.save
-      @current_person.update_attributes({ tokens: (@current_person.tokens - 1) < 0 ? 0 : (@current_person.tokens - 1) })
+      current_user.update_attributes({ tokens: (current_user.tokens - 1) < 0 ? 0 : (current_user.tokens - 1) })
       redirect_to @challenge_request.assignee
     else
       redirect_to @challenge_request.assignee
@@ -34,7 +34,7 @@ class ChallengeRequestsController < ApplicationController
 
   def destroy
     @challenge_request.destroy
-    redirect_to @current_person
+    redirect_to current_user
   end
 
   private

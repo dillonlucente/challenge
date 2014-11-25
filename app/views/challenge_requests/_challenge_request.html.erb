@@ -1,10 +1,13 @@
 <li>
-<% if challenge_request.assignee == @current_person %>
-	<%= form_for challenge_request, data: { remote: true } do |f| %>
-		<%= f.check_box :complete, class: "challenge checkbox" %>
-		<%= content_tag :span, challenge_request.text, id: "challenge-#{challenge_request.id}", class: "challenge #{challenge_request.complete? ? "complete" : ""}" %>
+	<% if challenge_request.assignee == current_user %>
+		<%= form_for challenge_request, data: { remote: true }, html: { class: "form-inline" } do |f| %>
+			<div class="checkbox">
+				<%= f.check_box :complete, class: "challenge checkbox form-input" %>
+				&nbsp;&nbsp;
+				<%= content_tag :span, challenge_request.text, id: "challenge-#{challenge_request.id}", class: "challenge #{challenge_request.complete? ? "complete" : ""}" %>
+			</div>
+		<% end %>
+	<% else %>
+		<%= content_tag :span, challenge_request.text, class: "challenge #{challenge_request.complete? ? "complete" : ""}" %>
 	<% end %>
-<% else %>
-	<%= content_tag :span, challenge_request.text, class: "challenge #{challenge_request.complete? ? "complete" : ""}" %>
-<% end %>
 </li>

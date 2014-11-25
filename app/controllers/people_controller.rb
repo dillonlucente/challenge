@@ -22,7 +22,7 @@ class PeopleController < ApplicationController
   end
 
   def show
-    @current_user = current_user
+
   end
 
   def edit

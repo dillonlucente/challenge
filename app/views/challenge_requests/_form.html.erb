@@ -1,6 +1,6 @@
-<%= form_for @challenge_request do |f| %>
+<%= form_for @challenge_request, html: { role: "form", class: "form-inline" } do |f| %>
 	<%= f.hidden_field :assignee_id %>
-	<%= f.text_field :text, placeholder: "text" %>
+	<%= f.text_field :text, placeholder: "text", class: "form-control" %>
 
-	<%= f.submit @challenge_request.new_record? ? "Challenge" : "Update" %>
+	<%= f.submit @challenge_request.new_record? ? "Challenge" : "Update", class: "btn btn-default" %>
 <% end %>

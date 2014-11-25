@@ -1,5 +1,6 @@
-<h1><%= @person.name %></h1>
-<h2><%= @person.email %></h2>
+<h1><%= @person.name %> <small><%= @person.email %></small></h1>
+
+<br>
 
 <%= image_tag gravatar_url_for(@person.email), style: "width 64px; height: 64px;" %>
 
@@ -9,11 +10,11 @@
 	<%= render @person.challenges %>
 </ul>
 
-<% if @person == @current_person %>
+<% if @person == current_user %>
 	<p>
 		<% if @person.can_challenge? %>
-			<%= link_to people_path do %>
-				Challenge Someone (<span class="token-count"><%= pluralize(@current_person.tokens, "Token") %></span> left)
+			<%= link_to people_path, class: "btn btn-danger" do %>
+				Challenge Someone (<span class="token-count"><%= pluralize(current_user.tokens, "Token") %></span> left)
 			<% end %>
 		<% else %>
 			Complete some challenges to gain tokens.
@@ -22,26 +23,23 @@
 
 	<br>
 	<br>
-	<% if @person == @current_user %>
+	<% if @person == current_user %>
 		<%= link_to "Edit", edit_person_path(@person) %>
-
-		<br>
-		<br>
-
+		&nbsp;&nbsp;&nbsp;
 		<%= link_to "Leave", @person, method: :delete, data: {confirm: "Are you sure you want to leave all of your challenges behind?"} %>
 	<% end %>
 <% else %>
 	<p>
-		<% if @current_person.can_challenge? %>
-			<%= link_to new_person_challenge_request_path(@person) do %>
-				Challenge This Person (<span class="token-count"><%= pluralize(@current_person.tokens, "Token") %></span> left)
+		<% if current_user.can_challenge? %>
+			<%= link_to new_person_challenge_request_path(@person), class: "btn btn-danger" do %>
+				Challenge This Person (<span class="token-count"><%= pluralize(current_user.tokens, "Token") %></span> left)
 			<% end %>
 
 			<br>
 			<br>
 
 			<%= link_to people_path do %>
-				Challenge Someone (<span class="token-count"><%= pluralize(@current_person.tokens, "Token") %></span> left)
+				Challenge Someone (<span class="token-count"><%= pluralize(current_user.tokens, "Token") %></span> left)
 			<% end %>
 		<% else %>
 			Complete some challenges to challenge this person.

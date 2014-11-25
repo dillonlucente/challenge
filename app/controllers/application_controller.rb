@@ -7,17 +7,17 @@ class ApplicationController < ActionController::Base
     render file: 'public/404.html', status: :not_found, layout: false
   end
 
+  def signed_in?
+    session[:person_id] && Person.find(session[:person_id])
+  end
+
+  def current_user
+    Person.find(session[:person_id]) if session[:person_id]
+  end
+
   protected
     def authenticate
-      if session[:person_id]
-        @current_person = Person.find(session[:person_id])
-      else
-        redirect_to login_path
-      end
-    end
-
-    def current_user
-      Person.find(session[:person_id])
+      redirect_to login_path unless session[:person_id] && Person.find(session[:person_id])
     end
 
 end
