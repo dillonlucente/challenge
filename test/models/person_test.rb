@@ -21,4 +21,9 @@ class PersonTest < ActiveSupport::TestCase
      assert_not invalid_person.save
   end
 
+  test ":tokens are not allowed to be below 0" do 
+    person = Person.new(email: "seb@example.com", password: "password", password_confirmation: "password")
+    assert_equal(false,person.update_attributes(tokens: -1))
+  end 
+
 end

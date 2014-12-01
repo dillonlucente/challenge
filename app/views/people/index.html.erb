@@ -1,7 +1,18 @@
 <h1>Challenge Somebody</h1>
 
 <ul>
-	<%= render @people %>
+	<%@people.each do |person|%>
+	<%unless person.name == current_user.name %>
+		<%= link_to("#{person.name}(#{person.email})", person_path(person))%>
+		<%end %>
+		<%end%>
 </ul>
 
 <%= will_paginate @people %>
+
+
+
+
+
+
+		

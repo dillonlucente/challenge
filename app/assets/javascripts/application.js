@@ -12,7 +12,12 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require pjax
 //= require twitter/bootstrap
 //= require turbolinks
 //= require twitter/bootstrap
 //= require_tree .
+
+
+
+

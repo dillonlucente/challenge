@@ -1,14 +1,14 @@
 Rails.application.routes.draw do
-  root "sessions#new"
-
+  root 'people#me'
+  
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
   delete '/logout' => 'sessions#destroy'
   get '/logout' => 'sessions#destroy'
-
+  get '/people/me' => 'people#me'
   resources :sessions
 
-  resources :people do
+  resources :people do 
     resources :challenge_requests, only: :new
   end
 

@@ -3,6 +3,14 @@ class PeopleController < ApplicationController
 
   before_filter :load_person, only: [:edit, :update, :destroy, :show]
 
+  def me
+    if session[:person_id] == nil
+      redirect_to login_path
+    else
+      @person = Person.find(session[:person_id])
+    end 
+  end 
+
   def index
     @people = Person.all.paginate(page: params[:page])
   end
