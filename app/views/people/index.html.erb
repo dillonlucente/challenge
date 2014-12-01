@@ -2,10 +2,8 @@
 
 <ul>
 	<%@people.each do |person|%>
-	<%unless person.name == current_user.name %>
 		<%= link_to("#{person.name}(#{person.email})", person_path(person))%>
-		<%end %>
-		<%end%>
+	<% end %>
 </ul>
 
 <%= will_paginate @people %>

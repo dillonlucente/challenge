@@ -12,7 +12,7 @@ class PeopleController < ApplicationController
   end 
 
   def index
-    @people = Person.all.paginate(page: params[:page])
+    @people = Person.where.not(id: current_user.id).paginate(page: params[:page])
   end
 
   def new
