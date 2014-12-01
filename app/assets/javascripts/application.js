@@ -12,12 +12,20 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require pjax
-//= require twitter/bootstrap
-//= require turbolinks
+//= require jquery.pjax
 //= require twitter/bootstrap
 //= require_tree .
 
+$(function() {
+  $(document).pjax('a:not([data-remote]):not([data-behavior]):not([data-skip-pjax])', '[data-pjax-container]');
 
+  // Hide new content when pjax begins to add a new page
+  $('#swipe').bind('pjax:start', function() {
+    $('#swipe').hide();
+  });
 
-
+  // Fade new content in when pjax is done adding a new page
+  $('#swipe').bind('pjax:end', function() {
+    $('#swipe').slideDown();
+  });
+});

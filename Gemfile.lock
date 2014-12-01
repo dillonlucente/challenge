@@ -74,8 +74,9 @@ GEM
     mime-types (2.4.3)
     minitest (5.4.3)
     multi_json (1.10.1)
-    pjax-rails (0.1.4)
+    pjax_rails (0.4.0)
       jquery-rails
+      railties (>= 3.2, < 5.0)
     pry (0.10.1)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
@@ -125,8 +126,6 @@ GEM
     tilt (1.4.1)
     timers (4.0.1)
       hitimes
-    turbolinks (2.5.2)
-      coffee-rails
     twitter-bootstrap-rails (3.2.0)
       actionpack (~> 4.1)
       execjs (~> 2.2)
@@ -149,13 +148,12 @@ DEPENDENCIES
   coffee-rails (~> 4.0.0)
   guard
   jquery-rails
-  pjax-rails
+  pjax_rails
   pry
   rails (= 4.1.6)
   sass-rails (~> 4.0.3)
   spring
   sqlite3
-  turbolinks
   twitter-bootstrap-rails
   uglifier (>= 1.3.0)
   will_paginate

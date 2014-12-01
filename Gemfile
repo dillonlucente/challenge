@@ -17,9 +17,12 @@ gem 'coffee-rails', '~> 4.0.0'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
-gem 'pjax-rails'
-# Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
-gem 'turbolinks'
+
+# Use pjax for page transitions
+#   @NOTE: 'pjax-rails' for some reason hasn't been pulled even though 
+#          it hasn't been updated for three years 
+#          and 'pjax_rails' is an official rails gem.
+gem 'pjax_rails'
 
 gem 'will_paginate'
 
